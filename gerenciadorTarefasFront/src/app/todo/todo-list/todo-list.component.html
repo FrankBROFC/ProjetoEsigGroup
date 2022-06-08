@@ -1,0 +1,61 @@
+<div class="container">
+  <form [formGroup]="todoForm">
+    <div class="row justify-content-start">
+      <div class="col-3">
+        <label class="form-label">Número</label>
+        <input type="number" class="form-control" formControlName="numero">
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col-9">
+        <label class="form-label">Titulo/Descrição</label>
+        <input type="text" class="form-control"  formControlName="titulo_descricao">
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col-4">
+        <label class="form-label">Responsável</label>
+        <select class="form-select" aria-label="Default select example" formControlName="responsavel">
+          <option *ngFor="let responsavel of responsaveis" [value]="responsavel">{{responsavel}}</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label class="form-label">Situação</label>
+        <select class="form-select" aria-label="Default select example" formControlName="situacao">
+          <option *ngFor="let situacao of situacoes" [value]="situacao">{{situacao}}</option>
+        </select>
+      </div>
+      <div class="col-4 align-self-end">
+        <button type="button" class="btn btn-info" (click)="buscar()">Buscar Tarefa</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" style="text-align: center">Número</th>
+      <th scope="col">Título</th>
+      <th scope="col">Responsável</th>
+      <th scope="col">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of todos$">
+      <th style="width: 10vw; text-align: center" scope="row">{{todo.id}}</th>
+      <td style="width: 30vw">{{todo.titulo}}</td>
+      <td>{{todo.responsavel}}</td>
+      <td style="width: 15vw">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="delete(todo.id)">Editar<i class="bi bi-pen"></i>
+        </button>
+        |
+        <button type="button" class="btn btn-danger btn-sm" (click)="delete(todo.id)">Excluir<i class="bi bi-trash"></i>
+        </button>
+        |
+        <button type="button" class="btn btn-success btn-sm" (click)="concluir(todo.id)">Concluir<i
+          class="bi bi-check"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

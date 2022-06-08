@@ -1,0 +1,60 @@
+<div class="container" style="max-width: 900px">
+  <form [formGroup]="novoTodoForm">
+    <div class="row justify-content-center">
+      <div class="mb-3">
+        <label class="form-label">Título*</label>
+        <input type="text" class="form-control" formControlName="titulo" placeholder="Ex: Dever de casa" maxlength="50">
+        <app-mensagem *ngIf="novoTodoForm.get('titulo')?.errors?.['required'] && novoTodoForm.get('titulo')?.touched"
+                      mensagem="Titulo é obrigatório"></app-mensagem>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <textarea class="form-control" formControlName="descricao" rows="3" maxlength="250"></textarea>
+      </div>
+    </div>
+
+    <div class="row justify-content-start">
+      <div class="col-6">
+        <label class="form-label">Responsável*</label>
+        <select class="form-select" aria-label="Default select example" formControlName="responsavel">
+          <option *ngFor="let responsavel of responsaveis" [value]="responsavel">{{responsavel}}</option>
+        </select>
+        <app-mensagem
+          *ngIf="novoTodoForm.get('responsavel')?.errors?.['required'] && novoTodoForm.get('responsavel')?.value"
+          mensagem="Responsável é obrigatório"></app-mensagem>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Prioridade*</label>
+        <select class="form-select" aria-label="Default select example" formControlName="prioridade">
+          <option *ngFor="let prioridade of prioridades" [value]="prioridade">{{prioridade}}</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="row justify-content-start">
+      <div class="mb-3 col-6">
+        <label class="form-label">Deadline*</label>
+        <input type="date" class="form-control" id=""
+               formControlName="deadline">
+        <app-mensagem
+          *ngIf="novoTodoForm.get('deadline')?.errors?.['required'] && novoTodoForm.get('deadline')?.touched"
+          mensagem="Data é obrigatório"></app-mensagem>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <button type="submit" class="btn btn-danger mb-3" (click)="cancelar()">Cancelar</button>
+      </div>
+      <div class="col-2">
+        <button [disabled]="novoTodoForm.invalid" type="submit" class="btn btn-success mb-3" (click)="salvar()">Cadastrar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
