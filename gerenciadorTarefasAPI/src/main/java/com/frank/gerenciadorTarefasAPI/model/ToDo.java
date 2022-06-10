@@ -2,6 +2,8 @@ package com.frank.gerenciadorTarefasAPI.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.frank.gerenciadorTarefasAPI.enums.Prioridade;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -27,7 +29,7 @@ public class ToDo implements Comparable<ToDo> {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @NotNull
-    private String prioridade;
+    private Prioridade prioridade;
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -77,11 +79,11 @@ public class ToDo implements Comparable<ToDo> {
         this.responsavel = responsavel;
     }
 
-    public String getPrioridade() {
+    public Prioridade getPrioridade() {
         return prioridade;
     }
 
-    public void setPrioridade(String prioridade) {
+    public void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade;
     }
 
