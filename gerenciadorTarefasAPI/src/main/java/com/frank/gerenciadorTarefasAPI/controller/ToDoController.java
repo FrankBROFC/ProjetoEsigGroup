@@ -1,15 +1,11 @@
 package com.frank.gerenciadorTarefasAPI.controller;
 
 import com.frank.gerenciadorTarefasAPI.dto.ToDoBuscaDTO;
-import com.frank.gerenciadorTarefasAPI.enums.Situacao;
 import com.frank.gerenciadorTarefasAPI.model.ToDo;
 import com.frank.gerenciadorTarefasAPI.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
